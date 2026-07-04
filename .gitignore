@@ -1,15 +1,6 @@
 # Dependencies
 node_modules/
 
-# Next.js
-.next/
-
-# React/Vite
-dist/
-
-# React Build
-build/
-
 # Environment variables
 # .env
 # .env.local
@@ -17,11 +8,3 @@ build/
 # .env.test.local
 # .env.production.local
 
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# OS files
-.DS_Store
-Thumbs.db

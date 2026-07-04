@@ -13,6 +13,7 @@ import {
   updateProduct,
   getRelatedProducts,
   rating,
+  allProductCount
 } from "../controllers/productController.js";
 import upload from "../middleware/upload.js";
 import adminMiddleware from "../middleware/adminMiddleware.js";
@@ -26,6 +27,7 @@ router.post(
   addProduct,
 );
 router.get("/all", getAllProduct);
+router.get('/allProductCount',allProductCount)
 router.get("/singleProduct/:id", getSingleProduct);
 router.put("/update/:id", authMiddleware, adminMiddleware, updateProduct);
 router.delete("/delete/:id", authMiddleware, adminMiddleware, deleteProduct);

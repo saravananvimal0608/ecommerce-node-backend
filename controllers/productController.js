@@ -514,3 +514,22 @@ export const rating = async (req, res) => {
     });
   }
 };
+
+
+export const allProductCount = async (req, res) => {
+  try {
+    const count = await productModel.countDocuments();
+
+    return res.status(200).json({
+      message: "Data fetched successfully",
+      data: count,
+      success: true,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message || error,
+      error: true,
+      success: false,
+    });
+  }
+};

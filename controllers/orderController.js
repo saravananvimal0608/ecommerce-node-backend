@@ -65,6 +65,15 @@ export async function CashOnDeliveryOrderController(req, res) {
       },
     });
 
+    // reducing the product quantity
+    for (const item of list_items) {
+      await productModel.findByIdAndUpdate(item.productId._id, {
+        $inc: {
+          stock: -item.quantity,
+        },
+      });
+    }
+
     return res.status(200).json({
       message: "Order placed successfully",
       success: true,
@@ -319,3 +328,21 @@ export async function getOrderDetailsController(request, response) {
 
   }
 }
+
+export const allOrderCount = async (req, res) => {
+  try {
+    const count = await OrderModel.countDocuments();
+
+    return res.status(200).json({
+      message: "Data fetched successfully",
+      data: count,
+      success: true,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message || error,
+      error: true,
+      success: false,
+    });
+  }
+};

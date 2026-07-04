@@ -408,3 +408,44 @@ export const userDetails = async (req, res) => {
     });
   }
 };
+
+
+export const allUserCount = async (req, res) => {
+  try {
+    const count = await userModel.countDocuments({
+      role: { $ne: "admin" },
+    });
+
+    return res.status(200).json({
+      message: "Data fetched successfully",
+      data: count,
+      success: true,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message || error,
+      error: true,
+      success: false,
+    });
+  }
+};
+
+export const allUser = async (req, res) => {
+  try {
+    const users = await userModel.find({
+      role: { $ne: "admin" },
+    });
+
+    return res.status(200).json({
+      message: "Data fetched successfully",
+      data: users,
+      success: true,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message || error,
+      error: true,
+      success: false,
+    });
+  }
+};

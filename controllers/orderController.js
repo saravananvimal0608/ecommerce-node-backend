@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import mongoose from "mongoose";
-import razorpay from "../config/razorpay.js";
+import razorPay from "../config/razorPay.js";
 
 import CartProductModel from "../model/cartProductModel.js";
 import OrderModel from "../model/orderModel.js";
@@ -138,7 +138,7 @@ export async function paymentController(request, response) {
     };
 
     // create razorpay order
-    const razorpayOrder = await razorpay.orders.create(options);
+    const razorpayOrder = await razorPay.orders.create(options);
 
     return response.status(200).json({
       message: "Razorpay order created",

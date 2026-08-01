@@ -20,11 +20,6 @@ export const emailSend = async ({email,subject,html}) => {
     html: html,
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Email sent: " + info.response);
-    }
-  });
+  const info = await transporter.sendMail(mailOptions);
+  console.log("Email sent: " + info.response);
 };

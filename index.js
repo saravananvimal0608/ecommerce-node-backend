@@ -16,7 +16,10 @@ dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 connectDB();
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [process.env.FRONTEND_URL, "http://localhost:3000"],
+  credentials: true,
+}));
 app.use(express.json());
 const PORT = process.env.PORT || 8080;
 

@@ -3,7 +3,6 @@ import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 import connectDB from "./config/connectDB.js";
-import dns from "dns";
 import userRouter from "./routes/userRoutes.js";
 import categoryRouter from "./routes/categoryRoute.js";
 import productRouter from "./routes/productRoute.js";
@@ -11,8 +10,6 @@ import addressRouter from "./routes/addressRoute.js";
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from './routes/orderRoute.js'
 import subCategoryRouter from './routes/subCategoryRoute.js'
-
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 connectDB();
 const app = express();

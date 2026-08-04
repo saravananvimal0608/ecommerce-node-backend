@@ -9,6 +9,7 @@ export const emailSend = async ({ email, subject, html }) => {
     host: "smtp.gmail.com",
     port: 587,
     secure: false,
+    family: 4,
     auth: {
       user: "saravananvimal0608@gmail.com",
       pass: process.env.GOOGLE_APP_PASSWORD,

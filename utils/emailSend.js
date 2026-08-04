@@ -7,7 +7,6 @@ if (!process.env.GOOGLE_APP_PASSWORD) {
 export const emailSend = async ({ email, subject, html }) => {
   const transporter = nodemailer.createTransport({
     // host: "smtp.gmail.com",
-    host: "gmail",
     port: 587,
     secure: false,
     // connectionTimeout: 10000,

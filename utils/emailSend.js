@@ -4,14 +4,16 @@ if (!process.env.GOOGLE_APP_PASSWORD) {
   console.log("GOOGLE_APP_PASSWORD is required in env");
 }
 
-export const emailSend = async ({email,subject,html}) => {
+export const emailSend = async ({ email, subject, html }) => {
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    // host: "smtp.gmail.com",
+    host: "gmail",
     port: 587,
     secure: false,
-    family: 4,
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
+    // connectionTimeout: 10000,
+    // greetingTimeout: 10000,
+    logger: true,
+    debug: true,
     auth: {
       user: "saravananvimal0608@gmail.com",
       pass: process.env.GOOGLE_APP_PASSWORD,

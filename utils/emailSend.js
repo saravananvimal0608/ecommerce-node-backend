@@ -1,18 +1,27 @@
-import { BrevoClient } from "@getbrevo/brevo";
+import nodemailer from "nodemailer";
 
-if (!process.env.BREVO_API_KEY) {
-  console.log("BREVO_API_KEY is required in env");
+if (!process.env.GOOGLE_APP_PASSWORD) {
+  console.log("GOOGLE_APP_PASSWORD is required in env");
 }
 
-const brevo = new BrevoClient({ apiKey: process.env.BREVO_API_KEY });
-
 export const emailSend = async ({ email, subject, html }) => {
-  const { data } = await brevo.transactionalEmails.sendTransacEmail({
-    sender: { name: "Blinkit", email: "saravananvimal0608@gmail.com" },
-    to: [{ email }],
-    subject,
-    htmlContent: html,
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "saravananvimal0608@gmail.com",
+      pass: process.env.GOOGLE_APP_PASSWORD,
+    },
   });
 
-  console.log("Email sent: " + data.messageId);
+  const mailOptions = {
+    from: "saravananvimal0608@gmail.com",
+    to: email,
+    subject: subject,
+    html: html,
+  };
+
+  const info = await transporter.sendMail(mailOptions);
+  console.log("Email sent: " + info.response);
 };

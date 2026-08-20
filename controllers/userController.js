@@ -126,6 +126,12 @@ export const loginUser = async (req, res) => {
     }
     const emailCheck = await userModel.findOne({ email });
 
+    if (!emailCheck) {
+      return res
+        .status(400)
+        .json({ message: "invalid credentials", status: false, error: true });
+    }
+
     if (!emailCheck.verify_email) {
       return res.status(400).json({
         message: "Please verify your email to continue",
@@ -136,7 +142,7 @@ export const loginUser = async (req, res) => {
 
     const checkPassword = await bcrypt.compare(password, emailCheck.password);
 
-    if (!checkPassword || !emailCheck) {
+    if (!checkPassword) {
       return res
         .status(400)
         .json({ message: "invalid credentials", status: false, error: true });

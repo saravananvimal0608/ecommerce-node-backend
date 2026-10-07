@@ -10,3 +10,8 @@ CLOUDINARY_API_SECRET=s9JP7vSktxepXdNMveUPpm_uVGM
 RAZORPAY_KEY_ID=rzp_test_SshS4Wkb8QORvq
 RAZORPAY_KEY_SECRET=t2LeZnA47t2AZz1Go50eq38l
 # FRONTEND_URL=https://sanafashion.vercel.app/
+
+
+### install command
+npm install --legacy-peer-deps
+
